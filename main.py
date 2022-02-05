@@ -85,7 +85,7 @@ for train_index, test_index in split.split(X):
 
     pipe = make_pipeline(
         StandardScaler(),
-        LogisticRegression(max_iter=constants.max_iter)
+        LogisticRegression(max_iter=constants.max_iter, class_weight="balanced")
     )
     pipe.fit(train_X, train_y)
     predicted_ozone_probability = pipe.predict_proba(test_X)
